@@ -1,9 +1,14 @@
-const ProductCard = ({ product }) => {
-  // const dispatch = useDispatch();
+import { useDispatch, useSelector } from "react-redux";
+import { addCartProducts, addWishlistProducts } from "../utils/storeSlice";
 
-  // const handleCartClick = () => {
-  //   dispatch(addCartProdects(product));
-  // };
+const ProductCard = ({ product }) => {
+  const dispatch = useDispatch();
+  const cartProducts = useSelector((store) => store.store.cartProducts);
+  const wishlistProducts = useSelector((store) => store.store.wishlistProducts);
+
+  const isInCart = cartProducts.some((item) => item.id === product.id);
+  const isInWishlist = wishlistProducts.some((item) => item.id === product.id);
+
   return (
     <div className="card card-vertical d-flex direction-column relative shadow">
       <div className="card-image-container">
@@ -46,18 +51,43 @@ const ProductCard = ({ product }) => {
           </p>
         </div>
         <div className="cta-btn ">
-          <button className="button btn-primary  btn-icon cart-btn d-flex align-center justify-center gap cursor btn-margin h-11">
-            <span className="material-symbols-outlined text-3xl  cursor-pointer ">
-              favorite
-            </span>
-            Add To Wishlist
-          </button>
-          <button className="button btn-primary  btn-icon cart-btn d-flex align-center justify-center gap cursor btn-margin h-11">
-            <span className="material-symbols-outlined text-3xl cursor-pointer">
-              garden_cart
-            </span>
-            Add To Cart
-          </button>
+          {isInWishlist ? (
+            <button
+              className="button btn-primary  btn-icon cart-btn d-flex align-center justify-center gap cursor btn-margin h-11"
+              onClick={() => dispatch(addWishlistProducts(product))}>
+              <span class="material-symbols-outlined text-3xl cursor-pointer">
+                heart_check
+              </span>
+              Go To Wishlist
+            </button>
+          ) : (
+            <button
+              className="button btn-primary bg-green-600 btn-icon cart-btn d-flex align-center justify-center gap cursor btn-margin h-11"
+              onClick={() => dispatch(addWishlistProducts(product))}>
+              <span className="material-symbols-outlined text-3xl  cursor-pointer ">
+                favorite
+              </span>
+              Add To Wishlist
+            </button>
+          )}
+
+          {isInCart ? (
+            <button className="button btn-primary   btn-icon cart-btn d-flex align-center justify-center gap cursor btn-margin h-11">
+              <span className="material-symbols-outlined text-3xl cursor-pointer">
+                shopping_cart_checkout
+              </span>
+              Go To Cart
+            </button>
+          ) : (
+            <button
+              className="button btn-primary bg-green-600  btn-icon cart-btn d-flex align-center justify-center gap cursor btn-margin h-11"
+              onClick={() => dispatch(addCartProducts(product))}>
+              <span className="material-symbols-outlined text-3xl cursor-pointer">
+                add_shopping_cart
+              </span>
+              Add To Cart
+            </button>
+          )}
         </div>
       </div>
     </div>

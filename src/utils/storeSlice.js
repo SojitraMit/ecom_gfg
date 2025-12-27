@@ -9,6 +9,8 @@ const storeSlice = createSlice({
     furnitureProducts: [],
     shoesProducts: [],
     miscellaneousProducts: [],
+    cartProducts: [],
+    wishlistProducts: [],
     selectedProducts: [],
   },
 
@@ -31,6 +33,12 @@ const storeSlice = createSlice({
     addMiscellaneousProducts: (state, action) => {
       state.miscellaneousProducts = action.payload;
     },
+    addCartProducts: (state, action) => {
+      state.cartProducts.push(action.payload);
+    },
+    addWishlistProducts: (state, action) => {
+      state.wishlistProducts.push(action.payload);
+    },
     addSelectedProducts: (state, action) => {
       state.selectedProducts = action.payload;
     },
@@ -44,6 +52,8 @@ export const {
   addFurnitureProducts,
   addShoesProducts,
   addMiscellaneousProducts,
+  addCartProducts,
+  addWishlistProducts,
   addSelectedProducts,
 } = storeSlice.actions;
 export default storeSlice.reducer;

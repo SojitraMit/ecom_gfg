@@ -85,10 +85,14 @@ const Home = () => {
             onClick={() => handleCategoryClick(miscellaneousProducts)}
           />
         </div>
-        <img className="h-[700px] w-[1400px] mx-auto " src="images/offer.png" />
+        <img
+          className="h-[700px] w-[1400px] mx-auto cursor-pointer"
+          src="images/offer.png"
+          onClick={() => handleCategoryClick(allProducts)}
+        />
         <div className="flex pt-10  gap-8 bg-white h-56 overflow-hidden">
           <img
-            className="ml-96 h-36 -mr-12"
+            className="ml-96 h-36 -mr-12 "
             src="https://th.bing.com/th/id/OIP.fLImCF9nZsbMOkFAWgBtiwHaHa?w=180&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3"
           />
           <img

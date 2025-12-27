@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { BASE_URL } from "../utils/constants";
 import { addFurnitureProducts } from "../utils/storeSlice";
 import { useDispatch } from "react-redux";

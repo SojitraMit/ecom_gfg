@@ -12,11 +12,13 @@ const storeSlice = createSlice({
     cartProducts: [],
     wishlistProducts: [],
     selectedProducts: [],
+    selectedCategory: "All Products",
   },
 
   reducers: {
     addAllProdects: (state, action) => {
       state.allProducts = action.payload;
+      state.selectedProducts = action.payload;
     },
     addClotheProducts: (state, action) => {
       state.clotheProducts = action.payload;
@@ -36,11 +38,23 @@ const storeSlice = createSlice({
     addCartProducts: (state, action) => {
       state.cartProducts.push(action.payload);
     },
+    removeCartProducts: (state, action) => {
+      state.cartProducts = state.cartProducts.filter(
+        (item) => item.id !== action.payload.id
+      );
+    },
+
     addWishlistProducts: (state, action) => {
       state.wishlistProducts.push(action.payload);
     },
+    removeWishlistProducts: (state, action) => {
+      state.wishlistProducts = state.wishlistProducts.filter(
+        (item) => item.id !== action.payload.id
+      );
+    },
     addSelectedProducts: (state, action) => {
-      state.selectedProducts = action.payload;
+      state.selectedProducts = action.payload.products;
+      state.selectedCategory = action.payload.category;
     },
   },
 });
@@ -53,7 +67,9 @@ export const {
   addShoesProducts,
   addMiscellaneousProducts,
   addCartProducts,
+  removeCartProducts,
   addWishlistProducts,
+  removeWishlistProducts,
   addSelectedProducts,
 } = storeSlice.actions;
 export default storeSlice.reducer;

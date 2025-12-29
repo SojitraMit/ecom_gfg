@@ -1,13 +1,6 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React from "react";
 import Header from "./Header";
-import useAllProducts from "../hooks/useAllProducts";
-
-import useClotheProducts from "../hooks/useClotheProducts";
-import useElectronicProducts from "../hooks/useElectronicProducts";
-import useFurnitureProducts from "../hooks/useFurnitureProducts";
-import useMiscellaneousProducts from "../hooks/useMiscellaneousProducts";
-import useShoesProducts from "../hooks/useShoesProducts";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -16,12 +9,6 @@ import { addSelectedProducts } from "../utils/storeSlice";
 const Home = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  useAllProducts();
-  useClotheProducts();
-  useElectronicProducts();
-  useFurnitureProducts();
-  useShoesProducts();
-  useMiscellaneousProducts();
 
   const allProducts = useSelector((store) => store.store.allProducts);
   console.log(allProducts);
@@ -37,8 +24,8 @@ const Home = () => {
     (store) => store.store.miscellaneousProducts
   );
 
-  const handleCategoryClick = (products) => {
-    dispatch(addSelectedProducts(products));
+  const handleCategoryClick = (products, category) => {
+    dispatch(addSelectedProducts({ products: products, category: category }));
     navigate("/product");
   };
 
@@ -51,44 +38,48 @@ const Home = () => {
             className=" w-[360px] rounded-lg transition-transform duration-300 ease-out hover:scale-105 hover:shadow-2xl cursor-pointer"
             src="/images/all.png"
             alt="all"
-            onClick={() => handleCategoryClick(allProducts)}
+            onClick={() => handleCategoryClick(allProducts, "All Products")}
           />
           <img
             className="w-[360px] rounded-lg transition-transform duration-300 ease-out hover:scale-105 hover:shadow-2xl cursor-pointer"
             src="/images/clothe.png"
             alt="clothes"
-            onClick={() => handleCategoryClick(clotheProducts)}
+            onClick={() => handleCategoryClick(clotheProducts, "Clothes")}
           />
 
           <img
             className=" w-[360px] rounded-lg transition-transform duration-300 ease-out hover:scale-105 hover:shadow-2xl cursor-pointer"
             src="/images/electronics.png"
             alt="electronics"
-            onClick={() => handleCategoryClick(electronicProducts)}
+            onClick={() =>
+              handleCategoryClick(electronicProducts, "Electronics")
+            }
           />
           <img
             className=" w-[360px] rounded-lg transition-transform duration-300 ease-out hover:scale-105 hover:shadow-2xl cursor-pointer"
             src="/images/furniture.png"
             alt="furniture"
-            onClick={() => handleCategoryClick(furnitureProducts)}
+            onClick={() => handleCategoryClick(furnitureProducts, "Furniture")}
           />
           <img
             className=" w-[360px] rounded-lg transition-transform duration-300 ease-out hover:scale-105 hover:shadow-2xl cursor-pointer"
             src="/images/shoes.png"
             alt="alshoes"
-            onClick={() => handleCategoryClick(shoesProducts)}
+            onClick={() => handleCategoryClick(shoesProducts, "Shoes")}
           />
           <img
             className=" w-[360px] rounded-lg transition-transform duration-300 ease-out hover:scale-105 hover:shadow-2xl cursor-pointer"
             src="/images/miscellaneous.png"
             alt="all"
-            onClick={() => handleCategoryClick(miscellaneousProducts)}
+            onClick={() =>
+              handleCategoryClick(miscellaneousProducts, "Miscellaneous")
+            }
           />
         </div>
         <img
           className="h-[700px] w-[1400px] mx-auto cursor-pointer"
           src="images/offer.png"
-          onClick={() => handleCategoryClick(allProducts)}
+          onClick={() => handleCategoryClick(allProducts, "All Products")}
         />
         <div className="flex pt-10  gap-8 bg-white h-56 overflow-hidden">
           <img

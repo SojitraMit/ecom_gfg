@@ -1,15 +1,14 @@
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addCartProducts, addWishlistProducts } from "../utils/storeSlice";
 import { useNavigate } from "react-router-dom";
+import { addCartProducts, removeWishlistProducts } from "../utils/storeSlice";
 
-const ProductCard = ({ product }) => {
+const WishlistCard = ({ product }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const cartProducts = useSelector((store) => store.store.cartProducts);
-  const wishlistProducts = useSelector((store) => store.store.wishlistProducts);
 
   const isInCart = cartProducts.some((item) => item.id === product.id);
-  const isInWishlist = wishlistProducts.some((item) => item.id === product.id);
 
   return (
     <div className="card card-vertical d-flex direction-column relative shadow">
@@ -53,25 +52,14 @@ const ProductCard = ({ product }) => {
           </p>
         </div>
         <div className="cta-btn ">
-          {isInWishlist ? (
-            <button
-              className="button btn-primary bg-green-600 rounded-lg btn-icon cart-btn d-flex align-center justify-center gap cursor btn-margin h-11"
-              onClick={() => navigate("/wishlist")}>
-              <span class="material-symbols-outlined text-3xl cursor-pointer">
-                heart_check
-              </span>
-              Go To Wishlist
-            </button>
-          ) : (
-            <button
-              className="button btn-primary  btn-icon cart-btn d-flex rounded-lg  align-center justify-center gap cursor btn-margin h-11"
-              onClick={() => dispatch(addWishlistProducts(product))}>
-              <span className="material-symbols-outlined text-3xl  cursor-pointer ">
-                favorite
-              </span>
-              Add To Wishlist
-            </button>
-          )}
+          <button
+            className="button btn-primary bg-red-600 rounded-lg btn-icon cart-btn d-flex align-center justify-center gap cursor btn-margin h-11"
+            onClick={() => dispatch(removeWishlistProducts(product))}>
+            <span class="material-symbols-outlined text-3xl cursor-pointer">
+              delete
+            </span>
+            Remove
+          </button>
 
           {isInCart ? (
             <button
@@ -98,4 +86,4 @@ const ProductCard = ({ product }) => {
   );
 };
 
-export default ProductCard;
+export default WishlistCard;

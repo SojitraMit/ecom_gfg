@@ -16,10 +16,14 @@ const Header = () => {
           />
         </div>
         <nav className="flex gap-6  my-auto pr-9">
-          <span className="material-symbols-outlined text-4xl cursor-pointer">
+          <span
+            className="material-symbols-outlined text-4xl cursor-pointer"
+            onClick={() => navigate("/wishlist")}>
             favorite
           </span>
-          <span className="material-symbols-outlined text-4xl cursor-pointer">
+          <span
+            className="material-symbols-outlined text-4xl cursor-pointer"
+            onClick={() => navigate("/cart")}>
             garden_cart{" "}
           </span>
           <span className="material-symbols-outlined text-4xl cursor-pointer">

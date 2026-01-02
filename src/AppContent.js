@@ -11,12 +11,14 @@ import useElectronicProducts from "./hooks/useElectronicProducts";
 import useFurnitureProducts from "./hooks/useFurnitureProducts";
 import useShoesProducts from "./hooks/useShoesProducts";
 import useMiscellaneousProducts from "./hooks/useMiscellaneousProducts";
+import AuthLogin from "./components/AuthLogin";
 
 const appRouter = createBrowserRouter([
   { path: "/", element: <Home /> },
   { path: "/product", element: <Product /> },
   { path: "/cart", element: <Cart /> },
   { path: "/wishlist", element: <Wishlist /> },
+  { path: "/auth/login", element: <AuthLogin /> },
 ]);
 
 const AppContent = () => {
@@ -27,7 +29,6 @@ const AppContent = () => {
   useFurnitureProducts();
   useShoesProducts();
   useMiscellaneousProducts();
-  console.log("APP RUNNING");
 
   return <RouterProvider router={appRouter} />;
 };

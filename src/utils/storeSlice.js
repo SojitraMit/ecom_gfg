@@ -38,6 +38,9 @@ const storeSlice = createSlice({
     addCartProducts: (state, action) => {
       state.cartProducts.push(action.payload);
     },
+    clearCart: (state, action) => {
+      state.cartProducts = [];
+    },
     removeCartProducts: (state, action) => {
       state.cartProducts = state.cartProducts.filter(
         (item) => item.id !== action.payload.id
@@ -67,6 +70,7 @@ export const {
   addShoesProducts,
   addMiscellaneousProducts,
   addCartProducts,
+  clearCart,
   removeCartProducts,
   addWishlistProducts,
   removeWishlistProducts,

@@ -12,7 +12,7 @@ const ProductCard = ({ product }) => {
   const isInWishlist = wishlistProducts.some((item) => item.id === product.id);
 
   return (
-    <div className="card card-vertical d-flex direction-column relative shadow">
+    <div className="card card-vertical d-flex direction-column bg-slate-100  relative shadow-inner">
       <div className="card-image-container">
         <img
           className="card-image h-[298.4px] w-[298.4px] object-cover"

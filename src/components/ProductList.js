@@ -18,8 +18,8 @@ const ProductList = () => {
   // 🚫 EMPTY STATE (after loading)
 
   return (
-    <div className="mt-12">
-      <div className="text-center text-yellow-950 font-bold">
+    <div className="pt-6 bg-white">
+      <div className=" ml-96 mb-4  text-yellow-950 font-bold">
         <h1 className="text-5xl">{category}</h1>
       </div>
       {(!selectedProducts || selectedProducts.length === 0) && (

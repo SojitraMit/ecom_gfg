@@ -11,7 +11,7 @@ const Home = () => {
   const dispatch = useDispatch();
 
   const allProducts = useSelector((store) => store.store.allProducts);
-  console.log(allProducts);
+
   const clotheProducts = useSelector((store) => store.store.clotheProducts);
   const electronicProducts = useSelector(
     (store) => store.store.electronicProducts
@@ -34,12 +34,12 @@ const Home = () => {
       <Header />
       <div className="bg-white">
         <div className="p-9  flex flex-wrap  justify-center gap-x-20 gap-y-10 ">
-          <img
+          {/* <img
             className=" w-[360px] rounded-lg transition-transform duration-300 ease-out hover:scale-105 hover:shadow-2xl cursor-pointer"
             src="/images/all.png"
             alt="all"
             onClick={() => handleCategoryClick(allProducts, "All Products")}
-          />
+          /> */}
           <img
             className="w-[360px] rounded-lg transition-transform duration-300 ease-out hover:scale-105 hover:shadow-2xl cursor-pointer"
             src="/images/clothe.png"

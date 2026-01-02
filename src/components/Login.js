@@ -43,7 +43,7 @@ const Login = () => {
           {/* Password */}
           <div>
             <label className="block text-gray-700 font-semibold mb-2">
-              Password
+              Create Password
             </label>
             <input
               type="password"
